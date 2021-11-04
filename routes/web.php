@@ -7,6 +7,8 @@ use App\Http\Livewire\Frontend\ProductDetails;
 use App\Http\Livewire\Frontend\CartPage;
 use App\Http\Livewire\Frontend\CompareProduct;
 use App\Http\Livewire\Frontend\ProductListPage;
+use App\Http\Livewire\Frontend\ProuctByCategory;
+use App\Http\Livewire\Frontend\ProductListByCategory;
 use App\Http\Livewire\Frontend\CheckoutPage;
 use App\Http\Livewire\Frontend\AboutUs;
 use App\Http\Livewire\Frontend\ContactUs;
@@ -41,6 +43,8 @@ Route::prefix('products')->name('products.')->group(function ()
     Route::get('/', ProductPage::class)->name('index');
     Route::get('/list', ProductListPage::class)->name('list');
     Route::get('/{slug}', ProductDetails::class)->name('details');
+    Route::get('/categories/{slug}', ProuctByCategory::class)->name('by_category');
+    Route::get('/categories-list/{slug}', ProductListByCategory::class)->name('list_category');
 });
 Route::get('/cart', CartPage::class)->name('cart');
 Route::get('/compare-product', CompareProduct::class)->name('compare');

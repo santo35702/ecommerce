@@ -2,8 +2,8 @@
     <!--Collection Banner-->
     <div class="collection-header">
         <div class="collection-hero">
-            <div class="collection-hero__image"><img class="blur-up lazyload" data-src="{{ asset('assets/images/cat-women3.jpg') }}" src="{{ asset('assets/images/cat-women3.jpg') }}" alt="Women" title="Women" /></div>
-            <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">All Products List</h1></div>
+            <div class="collection-hero__image"><img class="blur-up lazyload" data-src="{{ asset('assets/images/cat-women.jpg') }}" src="{{ asset('assets/images/cat-women.jpg') }}" alt="Women" title="Women" /></div>
+            <div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">All Products Items</h1></div>
         </div>
     </div>
     <!--End Collection Banner-->
@@ -20,7 +20,7 @@
                         <div class="widget-content">
                             <ul class="sidebar_categories text-capitalize">
                                 @foreach ($categories as $key)
-                                    <li class="lvl-1"><a href="{{ route('products.list_category', $key->slug)}}" class="site-nav">{{ $key->name }}</a></li>
+                                    <li class="lvl-1"><a href="{{ route('products.by_category', $key->slug)}}" class="site-nav">{{ $key->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -183,9 +183,8 @@
             <!--Main Content-->
             <div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
                 <div class="category-description">
-                    <h3>Products Description</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+                    <h3>{{ $category->name }}</h3>
+                    <p>{{ $category->description }}</p>
                 </div>
                 <hr>
                 <div class="productList">
@@ -239,42 +238,103 @@
                         </div>
                     </div>
                     <!--End Toolbar-->
-                            <div class="list-view-items grid--view-items">
-                            	<!--ListView Item-->
-                                @foreach ($products as $key)
-                                <div class="list-product list-view-item">
-                                    <div class="list-view-item__image-column">
-                                        <div class="list-view-item__image-wrapper">
-                                            <!-- Image -->
-                                            <a href="{{ route('products.details', $key->slug) }}"><img class="list-view-item__image blur-up lazyload" data-src="{{ asset('assets/images/product-images/' . $key->image ) }}" src="{{ asset('assets/images/product-images/' . $key->image ) }}" alt="{{ $key->title }}" title="{{ $key->title }}"></a>
-                                            <!-- End Image -->
+                        @if ($products->count() > 0)
+                            <div class="grid-products grid--view-items">
+                                <div class="row">
+                                    @foreach ($products as $key)
+                                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 item grid-view-item--sold-out">
+                                        <!-- start product image -->
+                                        <div class="product-image">
+                                            <!-- start product image -->
+                                            <a href="{{ route('products.details', $key->slug) }}">
+                                                <!-- image -->
+                                                <img class="primary blur-up lazyload" data-src="{{ asset('assets/images/product-images/' . $key->image ) }}" src="{{ asset('assets/images/product-images/' . $key->image ) }}" alt="{{ $key->title }}" title="{{ $key->title }}">
+                                                <!-- End image -->
+                                                <!-- Hover image -->
+                                                <img class="hover blur-up lazyload" data-src="{{ asset('assets/images/product-images/product-image1-1.jpg') }}" src="{{ asset('assets/images/product-images/product-image1-1.jpg') }}" alt="{{ $key->title }}" title="{{ $key->title }}">
+                                                <!-- End hover image -->
+                                                <!-- product label -->
+                                                <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span> <span class="lbl pr-label1">new</span> <span class="lbl pr-label2">Hot</span> <span class="lbl on-sale">Sale</span> <span class="lbl pr-label3">Popular</span></div>
+                                                <span class="sold-out"><span>Sold out</span></span>
+                                                <!-- End product label -->
+                                            </a>
+                                            <!-- end product image -->
+
+                                            <!-- countdown start -->
+                                            <div class="saleTime desktop" data-countdown="2022/03/01"></div>
+                                            <!-- countdown end -->
+
+                                            <!-- Start product button -->
+                                            <a href="#" class="variants add btn btn-addto-cart" wire:click.prevent="store({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add To Cart</a>
+                                            <div class="button-set">
+                                                <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+                                                    <i class="icon anm anm-search-plus-r"></i>
+                                                </a>
+                                                <div class="wishlist-btn">
+                                                    <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
+                                                        <i class="icon anm anm-heart-l"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="compare-btn">
+                                                    <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
+                                                        <i class="icon anm anm-random-r"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <!-- end product button -->
                                         </div>
+                                        <!-- end product image -->
+
+                                        <!--start product details -->
+                                        <div class="product-details text-center">
+                                            <!-- product name -->
+                                            <div class="product-name text-capitalize">
+                                                <a href="{{ route('products.details', $key->slug) }}">{{ $key->title }}</a>
+                                            </div>
+                                            <!-- End product name -->
+                                            <!-- product price -->
+                                            <div class="product-price">
+                                                <span class="old-price">${{ $key->regular_price }}</span>
+                                                <span class="price">${{ $key->regular_price }}</span>
+                                            </div>
+                                            <!-- End product price -->
+
+                                            <div class="product-review">
+                                                <i class="font-13 fa fa-star"></i>
+                                                <i class="font-13 fa fa-star"></i>
+                                                <i class="font-13 fa fa-star"></i>
+                                                <i class="font-13 fa fa-star-o"></i>
+                                                <i class="font-13 fa fa-star-o"></i>
+                                            </div>
+                                            <!-- Variant -->
+                                            <ul class="swatches">
+                                                <li class="swatch medium rounded"><img src="{{ asset('assets/images/product-images/variant1.jpg') }}" alt="image" /></li>
+                                                <li class="swatch medium rounded"><img src="{{ asset('assets/images/product-images/variant2.jpg') }}" alt="image" /></li>
+                                                <li class="swatch medium rounded"><img src="{{ asset('assets/images/product-images/variant3.jpg') }}" alt="image" /></li>
+                                                <li class="swatch medium rounded"><img src="{{ asset('assets/images/product-images/variant4.jpg') }}" alt="image" /></li>
+                                                <li class="swatch medium rounded"><img src="{{ asset('assets/images/product-images/variant5.jpg') }}" alt="image" /></li>
+                                            </ul>
+                                            <!-- End Variant -->
+                                        </div>
+                                        <!-- End product details -->
+                                        <!-- countdown start -->
+                                        <div class="timermobile"><div class="saleTime desktop" data-countdown="2022/03/01"></div></div>
+                                        <!-- countdown end -->
                                     </div>
-                                    <div class="list-view-item__title-column">
-                                        <div class="h4 grid-view-item__title text-capitalize"><a href="{{ route('products.details', $key->slug) }}">{{ $key->title }}</a></div>
-                                        <!-- Product Review -->
-                                        <p class="product-review"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i></p>
-                                        <!-- End Product Review -->
-                                        <!-- Sort Description -->
-                                        <p>{{ $key->short_description }}</p>
-                                        <!-- End Sort Description -->
-                                        <!-- Price -->
-                                        <p class="product-price grid-view-item__meta">
-                                            <span class="old-price">${{ $key->regular_price }}</span>
-                                            <span class="product-price__price product-price__sale"><span class="money">${{ $key->regular_price }}</span></span>
-                                        </p>
-                                        <!-- End Price -->
-                                        <a href="#" class="variants btn btn--small" wire:click.prevent="store({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add To Cart</a>
-                                    </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
-                                <!--End ListView Item-->
                             </div>
+                        @else
+                            <h1 class="display-4">Sorry, No Products Match in this Category.</h1>
+                        @endif
                 </div>
+                @if ($products->count() > 0)
+                <hr class="clear">
                 <div class="pagination justify-content-between">
                     <p>Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} from {{ $products->total() }} result.</p>
                     {{ $products->links() }}
                 </div>
+                @endif
             </div>
             <!--End Main Content-->
         </div>

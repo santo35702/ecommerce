@@ -22,7 +22,7 @@
 </head>
 <body class="belle @if (request()->routeIs('home'))
         template-index template-index-belle
-    @elseif (request()->routeIs('products.index') || request()->routeIs('products.list'))
+    @elseif (request()->routeIs('products.index') || request()->routeIs('products.list') || request()->routeIs('products.by_category') || request()->routeIs('products.list_category'))
         template-collection
     @elseif (request()->routeIs('products.details'))
         template-product

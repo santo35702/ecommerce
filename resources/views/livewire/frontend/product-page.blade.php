@@ -20,7 +20,7 @@
                         <div class="widget-content">
                             <ul class="sidebar_categories text-capitalize">
                                 @foreach ($categories as $key)
-                                    <li class="lvl-1"><a href="#;" class="site-nav">{{ $key->name }}</a></li>
+                                    <li class="lvl-1"><a href="{{ route('products.by_category', $key->slug)}}" class="site-nav">{{ $key->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>

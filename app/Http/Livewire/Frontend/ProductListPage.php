@@ -44,7 +44,7 @@ class ProductListPage extends Component
         } else {
             $products = Product::paginate($this->pagesize);
         }
-        
+
         $categories = Category::orderBy('name', 'asc')->get();
         $brands = Brand::orderBy('name', 'asc')->get();
         $popular_products = Product::inRandomOrder()->limit(5)->get();
