@@ -15,6 +15,7 @@ use App\Http\Livewire\Frontend\ContactUs;
 use App\Http\Livewire\Frontend\FAQPage;
 use App\Http\Livewire\Frontend\NotFoundPage;
 use App\Http\Livewire\Frontend\WishlistPage;
+use App\Http\Livewire\Admin\CategoryPage;
 use App\Http\Livewire\Admin\DashboardPage as AdminDashboard;
 use App\Http\Livewire\Users\DashboardPage as UsersDashboard;
 
@@ -58,6 +59,7 @@ Route::get('/wishlist', WishlistPage::class)->name('wishlist');
 // Admin Route__
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
+    Route::get('/categories', CategoryPage::class)->name('category');
 });
 
 // Users & Customers Route__
