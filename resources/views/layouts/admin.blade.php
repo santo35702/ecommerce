@@ -203,7 +203,7 @@
               </a>
               <ul class="nav nav-treeview">
                   <li class="nav-item">
-                      <a href="{{ route('admin.products') }}" class="nav-link">
+                      <a href="{{ route('admin.products.index') }}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>View All</p>
                       </a>
@@ -237,9 +237,15 @@
               </a>
               <ul class="nav nav-treeview">
                   <li class="nav-item">
-                      <a href="{{ route('admin.brand') }}" class="nav-link">
+                      <a href="{{ route('admin.brands.index') }}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>View All</p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('admin.brands.add') }}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Add New</p>
                       </a>
                   </li>
               </ul>

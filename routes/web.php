@@ -18,6 +18,7 @@ use App\Http\Livewire\Frontend\WishlistPage;
 use App\Http\Livewire\Admin\AdminProductPage;
 use App\Http\Livewire\Admin\BrandPage;
 use App\Http\Livewire\Admin\CategoryPage;
+use App\Http\Livewire\Admin\AddBrandPage;
 use App\Http\Livewire\Admin\DashboardPage as AdminDashboard;
 use App\Http\Livewire\Users\DashboardPage as UsersDashboard;
 
@@ -61,13 +62,21 @@ Route::get('/wishlist', WishlistPage::class)->name('wishlist');
 // Admin Route__
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
-    // Route::prefix('products')->name('products.')->group(function ()
-    // {
-    //     Route::get('/', AdminProductPage::class)->name('index');
-    // });
-    Route::get('/products', AdminProductPage::class)->name('products');
+
+    Route::prefix('products')->name('products.')->group(function ()
+    {
+        Route::get('/', AdminProductPage::class)->name('index');
+    });
+    // Route::get('/products', AdminProductPage::class)->name('products');
+
     Route::get('/categories', CategoryPage::class)->name('category');
-    Route::get('/brands', BrandPage::class)->name('brand');
+
+    Route::prefix('brands')->name('brands.')->group(function ()
+    {
+        Route::get('/', BrandPage::class)->name('index');
+        Route::get('/add', AddBrandPage::class)->name('add');
+    });
+    // Route::get('/brands', BrandPage::class)->name('brand');
 });
 
 // Users & Customers Route__
