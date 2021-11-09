@@ -23,6 +23,7 @@ use App\Http\Livewire\Admin\CategoryPage;
 use App\Http\Livewire\Admin\AddBrandPage;
 use App\Http\Livewire\Admin\DashboardPage as AdminDashboard;
 use App\Http\Livewire\Admin\EditBrandPage;
+use App\Http\Livewire\Admin\AddProductPage;
 use App\Http\Livewire\Users\DashboardPage as UsersDashboard;
 
 /*
@@ -69,6 +70,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->n
     Route::prefix('products')->name('products.')->group(function ()
     {
         Route::get('/', AdminProductPage::class)->name('index');
+        Route::get('/add', AddProductPage::class)->name('add');
     });
     // Route::get('/products', AdminProductPage::class)->name('products');
 
