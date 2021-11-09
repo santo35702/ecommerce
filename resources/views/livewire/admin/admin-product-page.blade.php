@@ -35,10 +35,16 @@
                         Products Name
                     </th>
                     <th scope="col">
-                        Products Description
+                        Products Image
                     </th>
                     <th scope="col">
-                        Products Image
+                        Products Stock
+                    </th>
+                    <th scope="col">
+                        Products Price
+                    </th>
+                    <th scope="col">
+                        Products Category Name
                     </th>
                     <th scope="col">
                         Action
@@ -58,10 +64,16 @@
                         <small>created {{ $key->created_at }}</small>
                     </td>
                     <td>
-                        <a>{{ $key->short_description }}</a>
+                        <img src="{{ asset('assets/images/product-images/' . $key->image ) }}" class="img-fluid img-thumbnail img-size-50 img-circle" alt="">
                     </td>
                     <td>
-                        <img src="{{ asset('assets/images/product-images/' . $key->image ) }}" class="img-fluid img-thumbnail img-size-50 img-circle" alt="">
+                        <a>{{ $key->stock_status }}</a>
+                    </td>
+                    <td>
+                        <a>{{ $key->regular_price }}</a>
+                    </td>
+                    <td>
+                        <a>{{ $key->category->name }}</a>
                     </td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="#">
