@@ -68,7 +68,7 @@
                             <i class="fas fa-folder"></i>
                             View
                         </a>
-                        <a class="btn btn-info btn-sm" href="#">
+                        <a class="btn btn-info btn-sm" href="{{ route('admin.brands.edit', $key->slug) }}">
                             <i class="fas fa-pencil-alt"></i>
                             Edit
                         </a>

@@ -84,7 +84,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->n
     {
         Route::get('/', BrandPage::class)->name('index');
         Route::get('/add', AddBrandPage::class)->name('add');
-        Route::get('/edit/{slug}', EditBrandPage::class)->name('edit');
+        Route::get('/edit/{brand_slug}', EditBrandPage::class)->name('edit');
     });
     // Route::get('/brands', BrandPage::class)->name('brand');
 });
