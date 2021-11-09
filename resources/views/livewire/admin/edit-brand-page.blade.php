@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
               <label for="slug">Brands Slug</label>
-              <input type="text" id="slug" placeholder="Enter Brands Slug" class="form-control" wire:model="slug">
+              <input type="text" id="slug" placeholder="Enter Brands Slug" class="form-control" wire:model="slug" disabled>
             </div>
             <div class="form-group">
               <label for="description">Brands Description</label>
@@ -57,7 +57,7 @@
       </div>
       <div class="col-12">
         <a href="{{ route('admin.brands.index') }}" class="btn btn-secondary">Cancel</a>
-        <input type="submit" value="Create new Brands" class="btn btn-success float-right">
+        <input type="submit" value="Update Brands" class="btn btn-success float-right">
       </div>
     </div>
     </form>

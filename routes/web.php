@@ -76,7 +76,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->n
     {
         Route::get('/', CategoryPage::class)->name('index');
         Route::get('/add', AddCategoryPage::class)->name('add');
-        Route::get('/edit/{slug}', EditCategoryPage::class)->name('edit');
+        Route::get('/edit/{category_slug}', EditCategoryPage::class)->name('edit');
     });
     // Route::get('/categories', CategoryPage::class)->name('category');
 
