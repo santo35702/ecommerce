@@ -15,11 +15,14 @@ use App\Http\Livewire\Frontend\ContactUs;
 use App\Http\Livewire\Frontend\FAQPage;
 use App\Http\Livewire\Frontend\NotFoundPage;
 use App\Http\Livewire\Frontend\WishlistPage;
+use App\Http\Livewire\Admin\AddCategoryPage;
 use App\Http\Livewire\Admin\AdminProductPage;
+use App\Http\Livewire\Admin\EditCategoryPage;
 use App\Http\Livewire\Admin\BrandPage;
 use App\Http\Livewire\Admin\CategoryPage;
 use App\Http\Livewire\Admin\AddBrandPage;
 use App\Http\Livewire\Admin\DashboardPage as AdminDashboard;
+use App\Http\Livewire\Admin\EditBrandPage;
 use App\Http\Livewire\Users\DashboardPage as UsersDashboard;
 
 /*
@@ -69,12 +72,19 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->n
     });
     // Route::get('/products', AdminProductPage::class)->name('products');
 
-    Route::get('/categories', CategoryPage::class)->name('category');
+    Route::prefix('categories')->name('category.')->group(function ()
+    {
+        Route::get('/', CategoryPage::class)->name('index');
+        Route::get('/add', AddCategoryPage::class)->name('add');
+        Route::get('/edit/{slug}', EditCategoryPage::class)->name('edit');
+    });
+    // Route::get('/categories', CategoryPage::class)->name('category');
 
     Route::prefix('brands')->name('brands.')->group(function ()
     {
         Route::get('/', BrandPage::class)->name('index');
         Route::get('/add', AddBrandPage::class)->name('add');
+        Route::get('/edit/{slug}', EditBrandPage::class)->name('edit');
     });
     // Route::get('/brands', BrandPage::class)->name('brand');
 });
