@@ -17,7 +17,7 @@
   </section>
 
   <!-- Main content -->
-  <section class="content">
+  <section class="content pb-3">
       <form class="" enctype="multipart/form-data" wire:submit.prevent="addNewItem">
     <div class="row">
       <div class="col-md-6">
@@ -44,19 +44,9 @@
               <label for="short_description">Products Short Description</label>
               <textarea id="short_description" placeholder="Enter Products Short Description" class="form-control" rows="4" wire:model="description"></textarea>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="summernote">
               <label for="description">Products Description</label>
               <textarea id="description" placeholder="Enter Products Description" class="form-control" rows="6" wire:model="description"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="regular_price">Products Regular Price</label>
-              <input type="text" id="regular_price" placeholder="Enter Products Regular Price" class="form-control" wire:model="name" wire:keyup="generateSlug">
-            </div>
-            <div class="form-group">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile">Choose image</label>
-                </div>
             </div>
           </div>
           <!-- /.card-body -->
@@ -73,14 +63,21 @@
                 <label for="sku">Products SKU</label>
                 <input type="text" id="sku" placeholder="Enter Products SKU" class="form-control" wire:model="name" wire:keyup="generateSlug">
               </div>
-              <div class="form-group">
-                <label for="stock_status">Products Stock Status</label>
-                <select class="form-control" name="">
-                    <option>Select...</option>
-                    <option value="">In-Stock</option>
-                    <option value="">Out-Of-Stock</option>
-                </select>
+              <div class="form-group row">
+                  <label class="col-form-label col-sm-3 float-sm-left" for="inlineRadio2">Products Stock Status</label>
+                  <div class="icheck-primary form-check-inline">
+                      <input type="radio" id="radioPrimary1" name="r1">
+                      <label for="radioPrimary1">In-Stock</label>
+                  </div>
+                  <div class="icheck-primary form-check-inline">
+                      <input type="radio" id="radioPrimary2" name="r1">
+                      <label for="radioPrimary2">Out-Of-Stock</label>
+                  </div>
               </div>
+              {{-- <div class="custom-control custom-switch">
+                  <label class="custom-control-label" for="customSwitch1">Products Featured</label>
+                  <input type="checkbox" class="custom-control-input" id="customSwitch1">
+              </div> --}}
               <div class="form-group">
                 <label for="featured">Products Featured</label>
                 <select class="form-control" name="">
@@ -92,6 +89,16 @@
               <div class="form-group">
                 <label for="quantity">Products Quantity</label>
                 <input type="text" id="quantity" placeholder="Enter Products Quantity" class="form-control" wire:model="name" wire:keyup="generateSlug">
+              </div>
+              <div class="form-group">
+                <label for="regular_price">Products Regular Price</label>
+                <input type="text" id="regular_price" placeholder="Enter Products Regular Price" class="form-control" wire:model="name" wire:keyup="generateSlug">
+              </div>
+              <div class="form-group">
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile">
+                      <label class="custom-file-label" for="customFile">Choose image</label>
+                  </div>
               </div>
               <div class="form-group">
                 <label for="sale_price">Products Sale Price</label>
