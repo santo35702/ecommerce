@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Auth;
 
 class AddCategoryPage extends Component
 {
@@ -21,6 +22,7 @@ class AddCategoryPage extends Component
     public function addNewItem(Request $request)
     {
         $category = new Category();
+        $category->user_id = Auth::user()->id;
         $category->name = $this->name;
         $category->slug = $this->slug;
         $category->description = $this->description;

@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Auth;
 
 class AddBrandPage extends Component
 {
@@ -21,6 +22,11 @@ class AddBrandPage extends Component
     public function addNewItem(Request $request)
     {
         $brand = new Brand();
+        // if exiting brand found
+            // show error message == brand already apc_exists
+        // else (this is new brand)
+            // add this brand and show success message;
+        $brand->user_id = Auth::user()->id;
         $brand->name = $this->name;
         $brand->slug = $this->slug;
         $brand->description = $this->description;

@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
               <label for="slug">Brands Slug</label>
-              <input type="text" id="slug" placeholder="Enter Brands Slug" class="form-control" wire:model="slug">
+              <input type="text" id="slug" placeholder="Enter Brands Slug" class="form-control" wire:model="slug" disabled>
             </div>
             <div class="form-group">
               <label for="description">Brands Description</label>
