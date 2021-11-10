@@ -40,11 +40,11 @@
               <label for="slug">Products Slug</label>
               <input type="text" id="slug" placeholder="Enter Products Slug" class="form-control" wire:model="slug" disabled>
             </div>
-            <div class="form-group">
+            <div class="form-group summernote" id="summernote">
               <label for="short_description">Products Short Description</label>
               <textarea id="short_description" placeholder="Enter Products Short Description" class="form-control" rows="4" wire:model="description"></textarea>
             </div>
-            <div class="form-group" id="summernote">
+            <div class="form-group summernote" id="summernote">
               <label for="description">Products Description</label>
               <textarea id="description" placeholder="Enter Products Description" class="form-control" rows="6" wire:model="description"></textarea>
             </div>

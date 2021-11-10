@@ -389,7 +389,8 @@
     <script>
       $(function () {
         // Summernote
-        $('#summernote').summernote()
+        $('.summernote').summernote();
+        $('#summernote').summernote();
 
         // CodeMirror
         CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
