@@ -47,6 +47,9 @@
                         Products Category Name
                     </th>
                     <th scope="col">
+                        Products Brands Name
+                    </th>
+                    <th scope="col">
                         Action
                     </th>
                 </tr>
@@ -74,6 +77,9 @@
                     </td>
                     <td>
                         <a>{{ $key->category->name }}</a>
+                    </td>
+                    <td>
+                        <a>{{ $key->brands->name }}</a>
                     </td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="#">

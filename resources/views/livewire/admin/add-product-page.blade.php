@@ -40,11 +40,11 @@
               <label for="slug">Products Slug</label>
               <input type="text" id="slug" placeholder="Enter Products Slug" class="form-control" wire:model="slug" disabled>
             </div>
-            <div class="form-group summernote" id="summernote">
+            <div class="form-group summernote" id="">
               <label for="short_description">Products Short Description</label>
-              <textarea id="short_description" placeholder="Enter Products Short Description" class="form-control" rows="4" wire:model="description"></textarea>
+              <textarea id="short_description" placeholder="Enter Products Short Description" class="form-control" rows="4" wire:model="short_description"></textarea>
             </div>
-            <div class="form-group summernote" id="summernote">
+            <div class="form-group summernote" id="">
               <label for="description">Products Description</label>
               <textarea id="description" placeholder="Enter Products Description" class="form-control" rows="6" wire:model="description"></textarea>
             </div>
@@ -61,26 +61,34 @@
           <div class="card-body">
               <div class="form-group">
                 <label for="sku">Products SKU</label>
-                <input type="text" id="sku" placeholder="Enter Products SKU" class="form-control" wire:model="name" wire:keyup="generateSlug">
+                <input type="text" id="sku" placeholder="Enter Products SKU" class="form-control" wire:model="sku">
               </div>
-              <div class="form-group row">
-                  <label class="col-form-label col-sm-3 float-sm-left" for="inlineRadio2">Products Stock Status</label>
+              {{-- <div class="form-group row">
+                  <label class="col-form-label col-sm-3 float-sm-left">Products Stock Status</label>
                   <div class="icheck-primary form-check-inline">
-                      <input type="radio" id="radioPrimary1" name="r1">
-                      <label for="radioPrimary1">In-Stock</label>
+                      <input type="radio" id="instock" name="stock" value="instock">
+                      <label for="instock">In-Stock</label>
                   </div>
                   <div class="icheck-primary form-check-inline">
-                      <input type="radio" id="radioPrimary2" name="r1">
-                      <label for="radioPrimary2">Out-Of-Stock</label>
+                      <input type="radio" id="outstock" name="stock" value="outofstock">
+                      <label for="outstock">Out-Of-Stock</label>
                   </div>
-              </div>
+              </div> --}}
               {{-- <div class="custom-control custom-switch">
                   <label class="custom-control-label" for="customSwitch1">Products Featured</label>
                   <input type="checkbox" class="custom-control-input" id="customSwitch1">
               </div> --}}
               <div class="form-group">
+                <label for="featured">Products Stock Status</label>
+                <select class="form-control" wire:model="stock_status">
+                    <option>Select...</option>
+                    <option value="instock">In-Stock</option>
+                    <option value="outofstock">Out-Of-Stock</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <label for="featured">Products Featured</label>
-                <select class="form-control" name="">
+                <select class="form-control" wire:model="featured">
                     <option>Select...</option>
                     <option value="0">No</option>
                     <option value="1">Yes</option>
@@ -88,27 +96,36 @@
               </div>
               <div class="form-group">
                 <label for="quantity">Products Quantity</label>
-                <input type="text" id="quantity" placeholder="Enter Products Quantity" class="form-control" wire:model="name" wire:keyup="generateSlug">
+                <input type="text" id="quantity" placeholder="Enter Products Quantity" class="form-control" wire:model="quantity">
               </div>
               <div class="form-group">
                 <label for="regular_price">Products Regular Price</label>
-                <input type="text" id="regular_price" placeholder="Enter Products Regular Price" class="form-control" wire:model="name" wire:keyup="generateSlug">
+                <input type="text" id="regular_price" placeholder="Enter Products Regular Price" class="form-control" wire:model="regular_price">
               </div>
               <div class="form-group">
                   <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile">
-                      <label class="custom-file-label" for="customFile">Choose image</label>
+                      <input type="file" class="custom-file-input" id="image" wire:model="image">
+                      <label class="custom-file-label" for="image">Choose image</label>
                   </div>
               </div>
               <div class="form-group">
                 <label for="sale_price">Products Sale Price</label>
-                <input type="text" id="sale_price" placeholder="Enter Products Sell / Offer Price" class="form-control" wire:model="name" wire:keyup="generateSlug">
+                <input type="text" id="sale_price" placeholder="Enter Products Sell / Offer Price" class="form-control" wire:model="sale_price">
               </div>
               <div class="form-group">
                 <label for="category">Products Category</label>
-                <select class="form-control" name="">
+                <select class="form-control" wire:model="category_id">
                     <option>Select...</option>
                     @foreach ($categories as $key)
+                        <option value="{{ $key->id }}">{{ $key->name }}</option>
+                    @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="brands">Products Brands</label>
+                <select class="form-control" wire:model="brand_id">
+                    <option>Select...</option>
+                    @foreach ($brands as $key)
                         <option value="{{ $key->id }}">{{ $key->name }}</option>
                     @endforeach
                 </select>
@@ -119,8 +136,8 @@
         <!-- /.card -->
       </div>
       <div class="col-12">
-        <a href="{{ route('admin.brands.index') }}" class="btn btn-secondary">Cancel</a>
-        <input type="submit" value="Create new Brands" class="btn btn-success float-right">
+        <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Cancel</a>
+        <input type="submit" value="Create new Products" class="btn btn-success float-right">
       </div>
     </div>
     </form>
