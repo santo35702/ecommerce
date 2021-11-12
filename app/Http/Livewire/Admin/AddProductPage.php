@@ -9,10 +9,13 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
 use Auth;
 
 class AddProductPage extends Component
 {
+    use WithFileUploads;
+
     public $name;
     public $slug;
     public $short_description;
@@ -54,8 +57,8 @@ class AddProductPage extends Component
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
         $product->regular_price = $this->regular_price;
-        $imageName = Carbon::now()->timestamp() . '.' . $this->image->extension();
-        $this->image->storeAs('products', $imageName);
+        $imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
+        $this->image->storeAs('product-images', $imageName);
         $product->image = $imageName;
         $product->sale_price = $this->sale_price;
         $product->category_id = $this->category_id;
