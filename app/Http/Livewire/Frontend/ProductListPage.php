@@ -17,7 +17,7 @@ class ProductListPage extends Component
     public function mount()
     {
         $this->sorting = "default";
-        $this->pagesize = 10;
+        $this->pagesize = 20;
     }
 
     public function store($product_id, $product_name, $product_price, Request $request)

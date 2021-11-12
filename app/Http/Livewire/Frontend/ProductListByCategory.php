@@ -18,7 +18,7 @@ class ProductListByCategory extends Component
     public function mount($slug)
     {
         $this->sorting = "default";
-        $this->pagesize = 10;
+        $this->pagesize = 20;
         $this->slug = $slug;
     }
 
