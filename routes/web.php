@@ -16,6 +16,7 @@ use App\Http\Livewire\Frontend\FAQPage;
 use App\Http\Livewire\Frontend\NotFoundPage;
 use App\Http\Livewire\Frontend\WishlistPage;
 use App\Http\Livewire\Admin\AddCategoryPage;
+use App\Http\Livewire\Admin\EditProductPage;
 use App\Http\Livewire\Admin\AdminProductPage;
 use App\Http\Livewire\Admin\EditCategoryPage;
 use App\Http\Livewire\Admin\BrandPage;
@@ -71,6 +72,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->n
     {
         Route::get('/', AdminProductPage::class)->name('index');
         Route::get('/add', AddProductPage::class)->name('add');
+        Route::get('/edit/{product_slug}', EditProductPage::class)->name('edit');
     });
     // Route::get('/products', AdminProductPage::class)->name('products');
 
