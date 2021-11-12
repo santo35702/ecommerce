@@ -18,7 +18,7 @@
 
   <!-- Main content -->
   <section class="content pb-3">
-      <form class="" enctype="multipart/form-data" wire:submit.prevent="addNewItem">
+      <form enctype="multipart/form-data" wire:submit.prevent="addNewItem">
     <div class="row">
       <div class="col-md-6">
           @if (session('status'))
@@ -40,13 +40,21 @@
               <label for="slug">Products Slug</label>
               <input type="text" id="slug" placeholder="Enter Products Slug" class="form-control" wire:model="slug" disabled>
             </div>
-            <div class="form-group summernote" id="">
+            <div class="form-group summernote" id="summernote">
               <label for="short_description">Products Short Description</label>
               <textarea id="short_description" placeholder="Enter Products Short Description" class="form-control" rows="4" wire:model="short_description"></textarea>
             </div>
-            <div class="form-group summernote" id="">
+            <div class="form-group summernote" id="summernote">
               <label for="description">Products Description</label>
               <textarea id="description" placeholder="Enter Products Description" class="form-control" rows="6" wire:model="description"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="regular_price">Products Regular Price</label>
+              <input type="text" id="regular_price" placeholder="Enter Products Regular Price" class="form-control" wire:model="regular_price">
+            </div>
+            <div class="form-group">
+              <label for="sale_price">Products Sale Price</label>
+              <input type="text" id="sale_price" placeholder="Enter Products Sell / Offer Price" class="form-control" wire:model="sale_price">
             </div>
           </div>
           <!-- /.card-body -->
@@ -98,19 +106,18 @@
                 <label for="quantity">Products Quantity</label>
                 <input type="text" id="quantity" placeholder="Enter Products Quantity" class="form-control" wire:model="quantity">
               </div>
-              <div class="form-group">
-                <label for="regular_price">Products Regular Price</label>
-                <input type="text" id="regular_price" placeholder="Enter Products Regular Price" class="form-control" wire:model="regular_price">
-              </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                   <div class="custom-file">
                       <input type="file" class="custom-file-input" id="image" wire:model="image">
                       <label class="custom-file-label" for="image">Choose image</label>
                   </div>
-              </div>
+              </div> --}}
               <div class="form-group">
-                <label for="sale_price">Products Sale Price</label>
-                <input type="text" id="sale_price" placeholder="Enter Products Sell / Offer Price" class="form-control" wire:model="sale_price">
+                  <label class="" for="image">Choose image</label>
+                  <input type="file" class="form-control-file" id="image" wire:model="image">
+                  @if ($image)
+                      <img src="{{ $image->temporaryUrl() }}" class="img-fluid img-thumbnail rounded mx-auto d-block mt-2" width="120">
+                  @endif
               </div>
               <div class="form-group">
                 <label for="category">Products Category</label>
