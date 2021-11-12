@@ -222,11 +222,11 @@
                                 <div class="col-3 col-md-3 col-lg-3 text-right">
                                     <div class="input-group input-group-sm">
                                         <select class="custom-select custom-select-sm" id="PerPage" wire:model="pagesize">
-                                            <option value="10" selected="selected">10 Items</option>
-                                            <option value="20">20 Items</option>
+                                            <option value="20" selected="selected">20 Items</option>
                                             <option value="30">30 Items</option>
                                             <option value="40">40 Items</option>
                                             <option value="50">50 Items</option>
+                                            <option value="80">80 Items</option>
                                         </select>
                                         <div class="input-group-append">
                                             <label class="input-group-text" for="PerPage">Per Page</label>
