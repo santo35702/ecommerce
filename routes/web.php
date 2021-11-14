@@ -99,7 +99,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->n
     {
         Route::get('/', CarouselPage::class)->name('index');
         Route::get('/add', CarouselAddPage::class)->name('add');
-        Route::get('/edit/{carousel_id}', CarouselEditPage::class)->name('edit');
+        Route::get('/edit/{id}', CarouselEditPage::class)->name('edit');
     });
 });
 

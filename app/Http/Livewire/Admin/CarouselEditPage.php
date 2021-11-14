@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
+use Illuminate\Http\Request;
 
 class CarouselEditPage extends Component
 {

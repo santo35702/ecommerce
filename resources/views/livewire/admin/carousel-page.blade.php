@@ -73,20 +73,20 @@
                         <a>{{ $key->subtitle }}</a>
                     </td>
                     <td>
-                        <img src="{{ asset('assets/images/slideshow-banners/'. $key->image) }}" alt="">
+                        <img src="{{ asset('assets/images/slideshow-banners/'. $key->image) }}" alt="" width="180">
                     </td>
                     <td>
-                        <a>{{ $key->link }}</a>
+                        <a href="{{ $key->link }}" target="_blank">Click for Visit</a>
                     </td>
                     <td>
-                        <a>{{ $key->status == 1 ? 'Active' : 'Inactive' }}</a>
+                        <a class="btn btn-sm btn-default">{{ $key->status == 1 ? 'Active' : '<i class="fas fa-times-circle"></i>' }}</a>
                     </td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="#">
                             <i class="fas fa-folder"></i>
                             View
                         </a>
-                        <a class="btn btn-info btn-sm" href="{{ route('admin.brands.edit', $key->slug) }}">
+                        <a class="btn btn-info btn-sm" href="{{ route('admin.carousel.edit', $key->id) }}">
                             <i class="fas fa-pencil-alt"></i>
                             Edit
                         </a>
