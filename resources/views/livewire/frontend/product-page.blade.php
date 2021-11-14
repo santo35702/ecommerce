@@ -215,8 +215,8 @@
                                             <option value="name-desc">Alphabetically, Z-A</option>
                                             <option value="price-asc">Price, Low to High</option>
                                             <option value="price-desc">Price, High to Low</option>
-                                            <option value="date-asc">Date, New to Old</option>
-                                            <option value="date-desc">Date, Old to New</option>
+                                            <option value="date-desc">Date, New to Old</option>
+                                            <option value="date-asc">Date, Old to New</option>
                                         </select>
                                     </div>
                                 </div>
