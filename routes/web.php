@@ -17,11 +17,14 @@ use App\Http\Livewire\Frontend\NotFoundPage;
 use App\Http\Livewire\Frontend\WishlistPage;
 use App\Http\Livewire\Admin\AddCategoryPage;
 use App\Http\Livewire\Admin\EditProductPage;
+use App\Http\Livewire\Admin\CarouselAddPage;
 use App\Http\Livewire\Admin\AdminProductPage;
 use App\Http\Livewire\Admin\EditCategoryPage;
+use App\Http\Livewire\Admin\CarouselEditPage;
 use App\Http\Livewire\Admin\BrandPage;
 use App\Http\Livewire\Admin\CategoryPage;
 use App\Http\Livewire\Admin\AddBrandPage;
+use App\Http\Livewire\Admin\CarouselPage;
 use App\Http\Livewire\Admin\DashboardPage as AdminDashboard;
 use App\Http\Livewire\Admin\EditBrandPage;
 use App\Http\Livewire\Admin\AddProductPage;
@@ -91,6 +94,13 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->n
         Route::get('/edit/{brand_slug}', EditBrandPage::class)->name('edit');
     });
     // Route::get('/brands', BrandPage::class)->name('brand');
+
+    Route::prefix('carousel')->name('carousel.')->group(function ()
+    {
+        Route::get('/', CarouselPage::class)->name('index');
+        Route::get('/add', CarouselAddPage::class)->name('add');
+        Route::get('/edit/{carousel_id}', CarouselEditPage::class)->name('edit');
+    });
 });
 
 // Users & Customers Route__
