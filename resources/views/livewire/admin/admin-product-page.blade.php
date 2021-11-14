@@ -25,6 +25,12 @@
         <h3 class="card-title">All Products List</h3>
       </div>
       <div class="card-body">
+          @if (session('status'))
+              <div class="mb-4 alert alert-success">
+                  <h5><i class="icon fas fa-check"></i> Success!</h5>
+                  {{ session('status') }}
+              </div>
+          @endif
         <table id="example2" class="table table-bordered">
             <thead class="thead-light">
                 <tr>
@@ -90,7 +96,7 @@
                             <i class="fas fa-pencil-alt"></i>
                             Edit
                         </a>
-                        <a class="btn btn-danger btn-sm" href="#">
+                        <a class="btn btn-danger btn-sm" href="#" wire:click.prevent="deleteItem('{{ $key->id }}')">
                             <i class="fas fa-trash"></i>
                             Delete
                         </a>
