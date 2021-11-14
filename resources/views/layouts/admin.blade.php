@@ -282,9 +282,9 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="{{ route('admin.brands.add') }}" class="nav-link">
+                      <a href="{{ route('admin.carousel.add') }}" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
-                          <p>Add New</p>
+                          <p>Add New Slider</p>
                       </a>
                   </li>
               </ul>
