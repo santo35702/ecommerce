@@ -92,18 +92,21 @@
           </div>
           <div class="card-body">
             <div class="form-group">
-              <label for="name">Choose Categories</label>
-              <select multiple class="form-control" id="exampleFormControlSelect2">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
+              <label for="categories">Choose Categories</label>
+              <select multiple class="form-control select2 js-states" id="categories" name="categories[]">
+                  @foreach ($categories as $key)
+                      <option value="{{ $key->id }}">{{ $key->name }}</option>
+                  @endforeach
               </select>
+            </div>
+            <div class="form-group">
+              <label for="product_no">No of Products</label>
+              <input type="text" id="product_no" placeholder="Enter Brands Slug" class="form-control" wire:model="slug">
             </div>
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-              <a href="{{ route('admin.brands.index') }}" class="btn btn-secondary">Cancel</a>
-              <input type="submit" value="Create new Brands" class="btn btn-success float-right">
+              <input type="submit" value="Save" class="btn btn-success float-right">
           </div>
           {{-- /.card-footer --}}
         </div>
@@ -114,3 +117,20 @@
   </section>
   <!-- /.content -->
 </div>
+
+@push('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: {
+                    id: '-1',
+                    text: 'Select an option',
+                },
+                theme: "classic",
+                selectOnClose: false,
+                closeOnSelect: false,
+                allowClear: true,
+            });
+        });
+    </script>
+@endpush
