@@ -17,7 +17,7 @@
   </section>
 
   <!-- Main content -->
-  <section class="content mb-2">
+  <section class="content pb-2">
       <form class="" action="" method="post" wire:submit.prevent="addNewItem">
     <div class="row">
       <div class="col-md-12">
