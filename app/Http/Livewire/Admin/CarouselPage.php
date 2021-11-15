@@ -8,6 +8,13 @@ use App\Models\HomeSlider;
 
 class CarouselPage extends Component
 {
+    public function deleteItem($id, Request $request)
+    {
+        $carousel = HomeSlider::find($id);
+        $carousel->delete();
+        $request->session()->flash('status', 'Carousel has been deleted successfully!');
+    }
+    
     public function render()
     {
         $carousel = HomeSlider::all();

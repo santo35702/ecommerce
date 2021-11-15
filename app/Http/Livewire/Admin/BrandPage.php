@@ -14,7 +14,7 @@ class BrandPage extends Component
         $brand->delete();
         $request->session()->flash('status', 'Brand has been deleted successfully!');
     }
-    
+
     public function render()
     {
         $brands = Brand::get();
