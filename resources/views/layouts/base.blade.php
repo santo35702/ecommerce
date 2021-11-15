@@ -122,20 +122,6 @@
                             <li class="lvl1"><a href="{{ route('home') }}">Home </a></li>
                             <li class="lvl1"><a href="{{ route('about') }}">About Us </a></li>
                             <li class="lvl1"><a href="{{ route('products.index') }}">Products </a></li>
-                            @if (Auth::check())
-                                @if (Auth::user()->utype === 'ADM')
-                                    <li class="lvl1"><a href="{{ route('admin.dashboard') }}">Dashboard </a></li>
-                                @else
-                                    <li class="lvl1"><a href="{{ route('users.dashboard') }}">Dashboard </a></li>
-                                @endif
-                                <li class="lvl1">
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                               this.closest('form').submit();">Log Out </a>
-                                    </form>
-                                </li>
-                            @endif
                             <li class="lvl1 parent dropdown"><a href="#">Pages <i class="anm anm-angle-down-l"></i></a>
                                 <ul class="dropdown">
                                     <li><a href="{{ route('compare') }}" class="site-nav">Compare Product </a></li>
@@ -154,6 +140,24 @@
                                 </ul>
                             </li>
                             <li class="lvl1"><a href="{{ route('contact') }}">Contact Us </a></li>
+                            @if (Auth::check())
+                                <li class="lvl1 parent dropdown"><a href="#">My Accounts <i class="anm anm-angle-down-l"></i></a>
+                                    <ul class="dropdown">
+                                        @if (Auth::user()->utype === 'ADM')
+                                            <li><a href="{{ route('admin.dashboard') }}" class="site-nav">Dashboard</a></li>
+                                        @else
+                                            <li><a href="{{ route('users.dashboard') }}" class="site-nav">Dashboard</a></li>
+                                        @endif
+                                        <li>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                       this.closest('form').submit();" class="site-nav">Log Out</a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endif
                         </ul>
                     </nav>
                     <!--End Desktop Menu-->
