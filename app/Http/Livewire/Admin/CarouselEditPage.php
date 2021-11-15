@@ -23,6 +23,7 @@ class CarouselEditPage extends Component
     public function mount($id)
     {
         $carousel = HomeSlider::find($id);
+        // $carousel = HomeSlider::where('id', $id)->first();
         $this->id = $carousel->id;
         $this->title = $carousel->title;
         $this->subtitle = $carousel->subtitle;
