@@ -265,10 +265,10 @@
                   </li>
               </ul>
           </li>
-          <li class="nav-header">Slider</li>
+          <li class="nav-header">Home Page</li>
           <li class="nav-item">
               <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-code-branch"></i>
+                  <i class="nav-icon far fa-image"></i>
                   <p>
                     Carousel
                     <i class="right fas fa-angle-left"></i>
@@ -288,6 +288,14 @@
                       </a>
                   </li>
               </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.home_category') }}" class="nav-link">
+              <i class="nav-icon far fa-copy"></i>
+              <p>
+                Home Category
+              </p>
+            </a>
           </li>
           <li class="nav-header">EXAMPLE</li>
           <li class="nav-item">
