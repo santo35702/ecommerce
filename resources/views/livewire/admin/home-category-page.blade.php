@@ -19,9 +19,11 @@
   <!-- Main content -->
   <section class="content">
       <!-- Default box -->
-      <div class="card mb-4">
+      <div class="card card-primary mb-4">
+          <form class="" action="" method="post" wire:submit.prevent="updateHomeCategory">
         <div class="card-header">
-          <h3 class="card-title">Home Categories List</h3>
+          {{-- <h3 class="card-title">Home Categories List</h3> --}}
+          <h3 class="card-title">Manage Categories for Home Page</h3>
         </div>
         <div class="card-body">
             @if (session('status'))
@@ -30,7 +32,7 @@
                     {{ session('status') }}
                 </div>
             @endif
-          <table id="example2" class="table table-bordered">
+          {{-- <table id="example2" class="table table-bordered">
               <thead class="thead-light">
                   <tr>
                       <th scope="col">
@@ -51,7 +53,7 @@
                   @php
                       $sl = 1;
                   @endphp
-                  @foreach ($categories as $key)
+                  @foreach ($home_category_name as $key)
                   <tr>
                       <th scope="row">{{ $sl++ }}</th>
                       <td class="text-capitalize">
@@ -77,23 +79,40 @@
                   </tr>
                   @endforeach
               </tbody>
-          </table>
+          </table> --}}
+          <div class="form-group" wire:ignore>
+            <label for="categories">Choose Categories</label>
+            <select multiple class="form-control select2" id="categories" name="categories[]" wire:model="selected_categories">
+                @foreach ($categories as $key)
+                    <option value="{{ $key->id }}">{{ $key->name }}</option>
+                @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="product_no">No of Products</label>
+            <input type="text" id="product_no" placeholder="No of Products" class="form-control" wire:model="product_no">
+          </div>
         </div>
         <!-- /.card-body -->
+        <div class="card-footer">
+            <input type="submit" value="Save" class="btn btn-success float-right">
+        </div>
+        {{-- /.card-footer --}}
+        </form>
       </div>
       <!-- /.card -->
 
-    <div class="row">
+    {{-- <div class="row">
       <div class="col-md-12">
-          <form class="" action="" method="post" wire:submit.prevent="addNewItem">
+          <form class="" action="" method="post" wire:submit.prevent="updateHomeCategory">
         <div class="card card-primary mb-4">
           <div class="card-header">
             <h3 class="card-title">Add Categories to Home Page</h3>
           </div>
           <div class="card-body">
-            <div class="form-group">
+            <div class="form-group" wire:ignore>
               <label for="categories">Choose Categories</label>
-              <select multiple class="form-control select2 js-states" id="categories" name="categories[]">
+              <select multiple class="form-control select2" id="categories" name="categories[]" wire:model="selected_categories">
                   @foreach ($categories as $key)
                       <option value="{{ $key->id }}">{{ $key->name }}</option>
                   @endforeach
@@ -101,7 +120,7 @@
             </div>
             <div class="form-group">
               <label for="product_no">No of Products</label>
-              <input type="text" id="product_no" placeholder="Enter Brands Slug" class="form-control" wire:model="slug">
+              <input type="text" id="product_no" placeholder="No of Products" class="form-control" wire:model="product_no">
             </div>
           </div>
           <!-- /.card-body -->
@@ -109,11 +128,11 @@
               <input type="submit" value="Save" class="btn btn-success float-right">
           </div>
           {{-- /.card-footer --}}
-        </div>
+        {{-- </div>
         <!-- /.card -->
         </form>
       </div>
-    </div>
+    </div> --}}
   </section>
   <!-- /.content -->
 </div>
@@ -123,13 +142,17 @@
         $(document).ready(function() {
             $('.select2').select2({
                 placeholder: {
-                    id: '-1',
+                    // id: '-1',
                     text: 'Select an option',
                 },
                 theme: "classic",
-                selectOnClose: false,
-                closeOnSelect: false,
-                allowClear: true,
+                // selectOnClose: false,
+                // closeOnSelect: false,
+                // allowClear: true,
+            });
+            $('.select2').on('change', function (e) {
+                var data = $('.select2').select2("val");
+                @this.set('selected_categories', data);
             });
         });
     </script>
