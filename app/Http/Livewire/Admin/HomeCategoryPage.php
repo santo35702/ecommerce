@@ -31,9 +31,9 @@ class HomeCategoryPage extends Component
     public function render()
     {
         $categories = Category::all();
-        // $home_category = HomeCategory::find(1);
-        // $home_category_id = explode(',', $home_category->categories_name);
-        // $home_category_name = Category::where('id', $home_category_id)->get();
-        return view('livewire.admin.home-category-page', ['categories' => $categories])->layout('layouts.admin');
+        $home_category = HomeCategory::find(1);
+        $home_category_id = explode(',', $home_category->categories_name);
+        $home_category_name = Category::whereIn('id', $home_category_id)->get();
+        return view('livewire.admin.home-category-page', ['categories' => $categories, 'home_category_name' => $home_category_name])->layout('layouts.admin');
     }
 }

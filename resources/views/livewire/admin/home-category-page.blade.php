@@ -19,20 +19,20 @@
   <!-- Main content -->
   <section class="content">
       <!-- Default box -->
-      <div class="card card-primary mb-4">
-          <form class="" action="" method="post" wire:submit.prevent="updateHomeCategory">
+      <div class="card card-success card-outline mb-4">
+          {{-- <form class="" action="" method="post" wire:submit.prevent="updateHomeCategory"> --}}
         <div class="card-header">
-          {{-- <h3 class="card-title">Home Categories List</h3> --}}
-          <h3 class="card-title">Manage Categories for Home Page</h3>
+          <h3 class="card-title">Home Categories List</h3>
+          {{-- <h3 class="card-title">Manage Categories for Home Page</h3> --}}
         </div>
-        <div class="card-body">
+        <div class="card-body table-responsive">
             @if (session('status'))
                 <div class="mb-4 alert alert-success">
                     <h5><i class="icon fas fa-check"></i> Success!</h5>
                     {{ session('status') }}
                 </div>
             @endif
-          {{-- <table id="example2" class="table table-bordered">
+          <table id="example2" class="table table-bordered">
               <thead class="thead-light">
                   <tr>
                       <th scope="col">
@@ -63,15 +63,15 @@
                           <small>{{ date($key->created_at) }}</small>
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="#">
+                          <a class="btn btn-primary btn-sm disabled" href="#">
                               <i class="fas fa-folder"></i>
                               View
                           </a>
-                          <a class="btn btn-info btn-sm" href="{{ route('admin.category.edit', $key->slug) }}">
+                          <a class="btn btn-info btn-sm disabled">
                               <i class="fas fa-pencil-alt"></i>
                               Edit
                           </a>
-                          <a class="btn btn-danger btn-sm" href="#" wire:click.prevent="deleteItem({{ $key->id }})">
+                          <a class="btn btn-danger btn-sm disabled" href="#">
                               <i class="fas fa-trash"></i>
                               Delete
                           </a>
@@ -79,8 +79,8 @@
                   </tr>
                   @endforeach
               </tbody>
-          </table> --}}
-          <div class="form-group" wire:ignore>
+          </table>
+          {{-- <div class="form-group" wire:ignore>
             <label for="categories">Choose Categories</label>
             <select multiple class="form-control select2" id="categories" name="categories[]" wire:model="selected_categories">
                 @foreach ($categories as $key)
@@ -91,21 +91,21 @@
           <div class="form-group">
             <label for="product_no">No of Products</label>
             <input type="text" id="product_no" placeholder="No of Products" class="form-control" wire:model="product_no">
-          </div>
+          </div> --}}
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
+        {{-- <div class="card-footer">
             <input type="submit" value="Save" class="btn btn-success float-right">
-        </div>
+        </div> --}}
         {{-- /.card-footer --}}
-        </form>
+        {{-- </form> --}}
       </div>
       <!-- /.card -->
 
-    {{-- <div class="row">
+    <div class="row">
       <div class="col-md-12">
-          <form class="" action="" method="post" wire:submit.prevent="updateHomeCategory">
-        <div class="card card-primary mb-4">
+          <form class="" wire:submit.prevent="updateHomeCategory">
+        <div class="card card-primary card-outline mb-4">
           <div class="card-header">
             <h3 class="card-title">Add Categories to Home Page</h3>
           </div>
@@ -128,11 +128,11 @@
               <input type="submit" value="Save" class="btn btn-success float-right">
           </div>
           {{-- /.card-footer --}}
-        {{-- </div>
+        </div>
         <!-- /.card -->
         </form>
       </div>
-    </div> --}}
+    </div>
   </section>
   <!-- /.content -->
 </div>
