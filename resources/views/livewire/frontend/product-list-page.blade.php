@@ -118,7 +118,14 @@
                                             </a>
                                         </div>
                                         <div class="details"> <a class="grid-view-item__title text-capitalize" href="{{ route('products.details', $key->slug) }}">{{ $key->title }}</a>
-                                          <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">${{ $key->regular_price }}</span></span></div>
+                                            <div class="grid-view-item__meta">
+                                                <span class="product-price__price {{ $key->sale_price > 0 ? 'product-price' : '' }}">
+                                                    @if ($key->sale_price > 0)
+                                                        <span class="{{ $key->sale_price > 0 ? 'old-price' : '' }} mr-2">${{ $key->regular_price }}</span>
+                                                    @endif
+                                                    <span class="money {{ $key->sale_price > 0 ? 'text-danger' : '' }}">${{ $key->sale_price > 0 ? $key->sale_price : $key->regular_price }}</span>
+                                                </span>
+                                            </div>
                                         </div>
                                       </div>
                                     </div>
@@ -202,10 +209,10 @@
                                         <img src="{{ asset('assets/images/list.jpg') }}" alt="List" />
                                     </a>
                                 </div>
-                                <div class="col-3 col-md-3 col-lg-3 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
+                                <div class="col-4 col-md-5 col-lg-3 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="SortBy">Short By</label>
+                                            <label class="input-group-text d-none d-sm-block" for="SortBy">Short By</label>
                                         </div>
                                         <select class="custom-select custom-select-sm" id="SortBy" wire:model="sorting">
                                             <option value="default" selected="selected">Default</option>
@@ -220,7 +227,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-3 col-md-3 col-lg-3 text-right">
+                                <div class="col-4 col-md-5 col-lg-3 text-right">
                                     <div class="input-group input-group-sm">
                                         <select class="custom-select custom-select-sm" id="PerPage" wire:model="pagesize">
                                             <option value="20" selected="selected">20 Items</option>
@@ -230,7 +237,7 @@
                                             <option value="80">80 Items</option>
                                         </select>
                                         <div class="input-group-append">
-                                            <label class="input-group-text" for="PerPage">Per Page</label>
+                                            <label class="input-group-text d-none d-sm-block" for="PerPage">Per Page</label>
                                         </div>
                                     </div>
                                 </div>
@@ -242,12 +249,29 @@
                             <div class="list-view-items grid--view-items">
                             	<!--ListView Item-->
                                 @foreach ($products as $key)
-                                <div class="list-product list-view-item">
+                                <div class="list-product list-view-item grid-view-item--sold-out">
                                     <div class="list-view-item__image-column">
                                         <div class="list-view-item__image-wrapper">
                                             <!-- Image -->
-                                            <a href="{{ route('products.details', $key->slug) }}"><img class="list-view-item__image blur-up lazyload" data-src="{{ asset('assets/images/product-images/' . $key->image ) }}" src="{{ asset('assets/images/product-images/' . $key->image ) }}" alt="{{ $key->title }}" title="{{ $key->title }}"></a>
+                                            <a href="{{ route('products.details', $key->slug) }}">
+                                                <img class="list-view-item__image blur-up lazyload" data-src="{{ asset('assets/images/product-images/' . $key->image ) }}" src="{{ asset('assets/images/product-images/' . $key->image ) }}" alt="{{ $key->title }}" title="{{ $key->title }}">
+                                                <!-- product label -->
+                                                <div class="product-labels rectangular">
+                                                    @if ($key->sale_price > 0)
+                                                        <span class="lbl on-sale">-16%</span>
+                                                        <span class="lbl on-sale">Sale</span>
+                                                    @endif
+                                                    <span class="lbl pr-label1">new</span> <span class="lbl pr-label2">Hot</span> <span class="lbl pr-label3">Popular</span>
+                                                </div>
+                                                <span class="sold-out"><span>Sold out</span></span>
+                                                <!-- End product label -->
+                                            </a>
                                             <!-- End Image -->
+                                            <!-- countdown start -->
+                                            @if ($key->sale_price > 0)
+                                                <div class="saleTime desktop text-center" data-countdown="2022/03/01"></div>
+                                            @endif
+                                            <!-- countdown end -->
                                         </div>
                                     </div>
                                     <div class="list-view-item__title-column">
@@ -260,11 +284,20 @@
                                         <!-- End Sort Description -->
                                         <!-- Price -->
                                         <p class="product-price grid-view-item__meta">
-                                            <span class="old-price">${{ $key->regular_price }}</span>
-                                            <span class="product-price__price product-price__sale"><span class="money">${{ $key->regular_price }}</span></span>
+                                            @if ($key->sale_price == 0)
+                                                <span class="product-price__price"><span class="money">${{ $key->regular_price }}</span></span>
+                                            @else
+                                                <span class="old-price">${{ $key->regular_price }}</span>
+                                                <span class="product-price__price product-price__sale"><span class="money">${{ $key->sale_price }}</span></span>
+                                            @endif
                                         </p>
                                         <!-- End Price -->
                                         <a href="#" class="variants btn btn--small" wire:click.prevent="store({{ $key->id }}, '{{ $key->title }}', {{ $key->regular_price }})">Add To Cart</a>
+                                        <!-- countdown start -->
+                                        @if ($key->sale_price > 0)
+                                            <div class="timermobile"><div class="saleTime desktop" data-countdown="2022/03/01"></div></div>
+                                        @endif
+                                        <!-- countdown end -->
                                     </div>
                                 </div>
                                 @endforeach
