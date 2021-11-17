@@ -118,7 +118,14 @@
                                             </a>
                                         </div>
                                         <div class="details"> <a class="grid-view-item__title text-capitalize" href="{{ route('products.details', $key->slug) }}">{{ $key->title }}</a>
-                                          <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">${{ $key->regular_price }}</span></span></div>
+                                            <div class="grid-view-item__meta">
+                                                <span class="product-price__price {{ $key->sale_price > 0 ? 'product-price' : '' }}">
+                                                    @if ($key->sale_price > 0)
+                                                        <span class="{{ $key->sale_price > 0 ? 'old-price' : '' }} mr-2">${{ $key->regular_price }}</span>
+                                                    @endif
+                                                    <span class="money {{ $key->sale_price > 0 ? 'text-danger' : '' }}">${{ $key->sale_price > 0 ? $key->sale_price : $key->regular_price }}</span>
+                                                </span>
+                                            </div>
                                         </div>
                                       </div>
                                     </div>
@@ -201,10 +208,10 @@
                                         <img src="{{ asset('assets/images/list.jpg') }}" alt="List" />
                                     </a>
                                 </div>
-                                <div class="col-3 col-md-3 col-lg-3 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
+                                <div class="col-4 col-md-4 col-lg-3 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="SortBy">Short By</label>
+                                            <label class="input-group-text d-none d-sm-block" for="SortBy">Short By</label>
                                         </div>
                                         <select class="custom-select custom-select-sm" id="SortBy" wire:model="sorting">
                                             <option value="default" selected="selected">Default</option>
@@ -219,7 +226,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-3 col-md-3 col-lg-3 text-right">
+                                <div class="col-4 col-md-4 col-lg-3 text-right">
                                     <div class="input-group input-group-sm">
                                         <select class="custom-select custom-select-sm" id="PerPage" wire:model="pagesize">
                                             <option value="20" selected="selected">20 Items</option>
@@ -229,7 +236,7 @@
                                             <option value="80">80 Items</option>
                                         </select>
                                         <div class="input-group-append">
-                                            <label class="input-group-text" for="PerPage">Per Page</label>
+                                            <label class="input-group-text d-none d-sm-block" for="PerPage">Per Page</label>
                                         </div>
                                     </div>
                                 </div>

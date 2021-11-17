@@ -209,10 +209,10 @@
                                         <img src="{{ asset('assets/images/list.jpg') }}" alt="List" />
                                     </a>
                                 </div>
-                                <div class="col-3 col-md-3 col-lg-3 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
+                                <div class="col-4 col-md-4 col-lg-3 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="SortBy">Short By</label>
+                                            <label class="input-group-text d-none d-sm-block" for="SortBy">Short By</label>
                                         </div>
                                         <select class="custom-select custom-select-sm" id="SortBy" wire:model="sorting">
                                             <option value="default" selected="selected">Default</option>
@@ -227,7 +227,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-3 col-md-3 col-lg-3 text-right">
+                                <div class="col-4 col-md-4 col-lg-3 text-right">
                                     <div class="input-group input-group-sm">
                                         <select class="custom-select custom-select-sm" id="PerPage" wire:model="pagesize">
                                             <option value="20" selected="selected">20 Items</option>
@@ -237,7 +237,7 @@
                                             <option value="80">80 Items</option>
                                         </select>
                                         <div class="input-group-append">
-                                            <label class="input-group-text" for="PerPage">Per Page</label>
+                                            <label class="input-group-text d-none d-sm-block" for="PerPage">Per Page</label>
                                         </div>
                                     </div>
                                     {{-- <div class="filters-toolbar__item">
