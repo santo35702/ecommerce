@@ -24,7 +24,7 @@
       <div class="card-header">
         <h3 class="card-title">All Products List</h3>
       </div>
-      <div class="card-body">
+      <div class="card-body table-responsive">
           @if (session('status'))
               <div class="mb-4 alert alert-success">
                   <h5><i class="icon fas fa-check"></i> Success!</h5>
@@ -38,22 +38,28 @@
                         Sl
                     </th>
                     <th scope="col">
-                        Products Name
+                        Name
                     </th>
                     <th scope="col">
-                        Products Image
+                        Image
                     </th>
                     <th scope="col">
-                        Products Stock
+                        Stock Status
                     </th>
                     <th scope="col">
-                        Products Price
+                        Regular Price
                     </th>
                     <th scope="col">
-                        Products Category Name
+                        Sale Price
                     </th>
                     <th scope="col">
-                        Products Brands Name
+                        Featured
+                    </th>
+                    <th scope="col">
+                        Category Name
+                    </th>
+                    <th scope="col">
+                        Brands Name
                     </th>
                     <th scope="col">
                         Action
@@ -80,6 +86,12 @@
                     </td>
                     <td>
                         <a>{{ $key->regular_price }}</a>
+                    </td>
+                    <td>
+                        <a>{{ $key->sale_price == Null ? '0.00' : $key->sale_price }}</a>
+                    </td>
+                    <td>
+                        <a>{{ $key->featured == Null ? 'No' : 'Yes' }}</a>
                     </td>
                     <td>
                         <a>{{ $key->category->name }}</a>

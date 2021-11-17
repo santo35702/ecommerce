@@ -20,13 +20,15 @@
   <section class="content pb-3">
       <form enctype="multipart/form-data" wire:submit.prevent="UpdateProduct">
     <div class="row">
+        <div class="col-12">
+            @if (session('status'))
+                <div class="mb-4 alert alert-success">
+                    <h5><i class="icon fas fa-check"></i> Success!</h5>
+                    {{ session('status') }}
+                </div>
+            @endif
+        </div>
       <div class="col-md-6">
-          @if (session('status'))
-              <div class="mb-4 alert alert-success">
-                  <h5><i class="icon fas fa-check"></i> Success!</h5>
-                  {{ session('status') }}
-              </div>
-          @endif
         <div class="card card-primary">
           <div class="card-header">
             <h3 class="card-title">Products Information</h3>
@@ -40,11 +42,11 @@
               <label for="slug">Products Slug</label>
               <input type="text" id="slug" placeholder="Enter Products Slug" class="form-control" wire:model="slug" disabled>
             </div>
-            <div class="form-group summernote" id="summernote">
+            <div class="form-group" id="">
               <label for="short_description">Products Short Description</label>
               <textarea id="short_description" placeholder="Enter Products Short Description" class="form-control" rows="4" wire:model="short_description"></textarea>
             </div>
-            <div class="form-group summernote" id="summernote">
+            <div class="form-group" id="">
               <label for="description">Products Description</label>
               <textarea id="description" placeholder="Enter Products Description" class="form-control" rows="6" wire:model="description"></textarea>
             </div>
@@ -124,7 +126,7 @@
         <!-- /.card -->
       </div>
       <div class="col-12">
-        <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Cancel</a>
+        <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Back</a>
         <input type="submit" value="Update Products" class="btn btn-success float-right">
       </div>
     </div>
