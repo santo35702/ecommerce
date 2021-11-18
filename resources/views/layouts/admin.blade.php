@@ -300,6 +300,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.sale') }}" class="nav-link">
+              <i class="nav-icon far fa-clock"></i>
+              <p>
+                Flash Sale Time
+              </p>
+            </a>
+          </li>
           <li class="nav-header">EXAMPLE</li>
           <li class="nav-item">
               <a href="#" class="nav-link">

@@ -22,6 +22,7 @@ use App\Http\Livewire\Admin\AdminProductPage;
 use App\Http\Livewire\Admin\EditCategoryPage;
 use App\Http\Livewire\Admin\CarouselEditPage;
 use App\Http\Livewire\Admin\HomeCategoryPage;
+use App\Http\Livewire\Admin\SalePage;
 use App\Http\Livewire\Admin\BrandPage;
 use App\Http\Livewire\Admin\CategoryPage;
 use App\Http\Livewire\Admin\AddBrandPage;
@@ -104,6 +105,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->prefix('admin')->n
     });
 
     Route::get('/home-categories', HomeCategoryPage::class)->name('home_category');
+    Route::get('flash-sale', SalePage::class)->name('sale');
 });
 
 // Users & Customers Route__
